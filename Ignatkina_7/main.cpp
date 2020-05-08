@@ -28,7 +28,7 @@ int count_positive(int* mas, int size)
 	int count = 0;
 	for (int i = 0; i < size; i++)
 	{
-		if (mas[i] >= 0)
+		if (mas[i] > 0)
 		{
 			count++;
 		}
@@ -55,7 +55,7 @@ void transform(int* mas, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (mas[i] >= 0)
+		if (mas[i] > 0)
 		{
 			mas[i] = sqrt(mas[i]);
 		}
@@ -70,7 +70,7 @@ void remove_over_n(int** mas, int& size, int n)
 {
 	int index = 0;
 	int* src = *mas; //исходный массив
-	int k = 0;//количество удалённых элементов
+	int k = 0; //количество удалённых элементов
 	for (; index < size; index++)
 	{
 		src[index - k] = src[index];
@@ -80,7 +80,7 @@ void remove_over_n(int** mas, int& size, int n)
 		}
 	}
 
-	size = size - k;//меняем размер
+	size = size - k; //меняем размер
 
 	int* dest = new int[size]; //новый массив
 	index = 0;
@@ -108,8 +108,8 @@ int main()
 
 	cout << "Программу сделала Игнаткина Валерия студент группы УТН-111" << "\n";
 	cout << "Программа по манипулированию массивом с помощью функций" << endl;
-	int size = -1;
-	int* mas = 0;
+	int size = 5;
+	int* mas = new int[size]{13, 15, 91, 50, 64};
 
 
 	int t;
