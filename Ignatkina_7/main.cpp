@@ -1,10 +1,10 @@
-﻿#include <iostream>
+﻿#include <iomanip>
+#include <iostream>
 
 using namespace std;
 
-void read_mas(int* mas, int size)
+void read_mas(double* mas, int size)
 {
-	cout << "mas: " << endl;
 	for (int i = 0; i < size; i++)
 	{
 		cout << "[" << i << "] = ";
@@ -12,18 +12,17 @@ void read_mas(int* mas, int size)
 	}
 }
 
-void write_mas(int* mas, int size)
+void write_mas(double* mas, int size)
 {
-	cout << "mas: ";
 	for (int i = 0; i < size; i++)
 	{
-		cout << mas[i] << " ";
+		cout << setprecision(3) << mas[i] << " ";
 	}
 	cout << endl;
 }
 
 
-int count_positive(int* mas, int size)
+int count_positive(double* mas, int size)
 {
 	int count = 0;
 	for (int i = 0; i < size; i++)
@@ -37,7 +36,7 @@ int count_positive(int* mas, int size)
 }
 
 
-int count_negative(int* mas, int size)
+int count_negative(double* mas, int size)
 {
 	int count = 0;
 	for (int i = 0; i < size; i++)
@@ -51,7 +50,7 @@ int count_negative(int* mas, int size)
 }
 
 
-void transform(int* mas, int size)
+void transform(double* mas, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -66,10 +65,10 @@ void transform(int* mas, int size)
 	}
 }
 
-void remove_over_n(int** mas, int& size, int n)
+void remove_over_n(double** mas, int& size, int n)
 {
 	int index = 0;
-	int* src = *mas; //исходный массив
+	double* src = *mas; //исходный массив
 	int k = 0; //количество удалённых элементов
 	for (; index < size; index++)
 	{
@@ -82,7 +81,7 @@ void remove_over_n(int** mas, int& size, int n)
 
 	size = size - k; //меняем размер
 
-	int* dest = new int[size]; //новый массив
+	double* dest = new double[size]; //новый массив
 	index = 0;
 	for (; index < size; index++)
 	{
@@ -109,7 +108,7 @@ int main()
 	cout << "Программу сделала Игнаткина Валерия студент группы УТН-111" << "\n";
 	cout << "Программа по манипулированию массивом с помощью функций" << endl;
 	int size = 6;
-	int* mas = new int[size]{13, 15, 91, 0, 50, 64};
+	double* mas = new double[size]{13, 15, 91, 0, 50, 64};
 
 
 	int t;
@@ -124,7 +123,7 @@ int main()
 				cout << "Введите размер массива: ";
 				cin >> size;
 
-				mas = new int[size];
+				mas = new double[size];
 				read_mas(mas, size);
 				break;
 			}
@@ -178,7 +177,7 @@ int main()
 					cout << "Перед удалением необходимо ввести массив!" << endl;
 					break;
 				}
-				int n;
+				double n;
 				cout << "Введите число N: ";
 				cin >> n;
 				remove_over_n(&mas, size, n);
